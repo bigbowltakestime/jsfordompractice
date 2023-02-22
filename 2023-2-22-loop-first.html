@@ -7,6 +7,26 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="root"></div>
+  <script>
+    // console.log(poke.map((x,k) => [x, k]))
+    // console.log(poke.slice(0,-2))
+    // console.log(poke[poke.length-1])
+    // console.log(poke[4])
+    // console.log(poke.length)
+    let poke = ["피카츄","라이츄","파이리","꼬부기","버터풀","야도란"];
+    let root = document.getElementById("root");
+    for(let i=0;i<poke.length;i++)
+      // let index=0;
+      // index < 10; //숫자 10을 인덱스에 감았다 비교연산
+      // index = index + 1)
+      {
+        console.log(poke[i])
+        root.innerHTML += (poke[i] + " ")
+      // let pokediv = document.createElement(div);
+      // pokediv.innerHTML = poke[i];
+      // root.appendChild(pokediv);
+    }
+  </script>
 </body>
 </html>

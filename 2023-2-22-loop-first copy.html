@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // console.log(poke.map((x,k) => [x, k]))
+    // console.log(poke.slice(0,-2))
+    // console.log(poke[poke.length-1])
+    // console.log(poke[4])
+    // console.log(poke.length)
+    let poke = ["피카츄","라이츄","파이리","꼬부기","버터풀","야도란"];
+    let electric = ["피카츄", "라이츄"];
+    let fire = ["파이리"];
+    let water = ["꼬부기", "야도란", ]
+    let insect = ["버터풀"]
+    let root = document.getElementById("root");
+    let type = ""
+    for(let i=0;i<poke.length;i++){
+        if(fire.includes(poke[i])){
+          type = poke[i] +"은 불 타입 입니다."
+        }
+        else if(water.includes(poke[i])){
+          type = poke[i] +"은 물 타입 입니다."
+        }
+        else if(insect.includes(poke[i])){
+          type = poke[i] +"은 곤충 타입 입니다."
+        }
+        else if(electric.includes(poke[i])){
+          type = poke[i] +"은 전기 타입 입니다."
+        }
+        else{
+          console.log("error")
+        }
+        console.log(type)
+
+        let newtext = document.createTextNode(type)
+        root.appendChild(newtext);
+        root.appendChild(document.createElement("br"));
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id = "root">
+    <div>
+      <input class = "numbutton" type="button" value=1 >
+      <input class = "numbutton" type="button" value=2 >
+      <input class = "numbutton" type="button" value=3 >
+      <br>
+      <input class = "numbutton" type="button" value=4 >
+      <input class = "numbutton" type="button" value=5 >
+      <input class = "numbutton" type="button" value=6 >
+      <br>
+      <input class = "numbutton" type="button" value=7 >
+      <input class = "numbutton" type="button" value=8 >
+      <input class = "numbutton" type="button" value=9 >
+      <br>
+      <input class = "numbutton" type="button" value=0 >
+
+    </div>
+    <div>
+      <input class = "calbutton" type="button" value="+">
+      <input class = "calbutton" type="button" value="-">
+      <input class = "calbutton" type="button" value="*">
+      <input class = "calbutton" type="button" value="/">
+      <input class = "calbutton" type="button" value="=">
+
+
+    </div>
+    <div>
+    </div>
+
+  </div>
+  <script>
+    let firnum = ""
+    let secnum = ""
+    let flag = true;
+    let butt = document.getElementsByClassName("numbutton");
+    for(let i =0;i<butt.length;i++){
+      butt[i].addEventListener('click', ()=>{
+        if(flag){
+          firnum += String(butt[i].value);
+          console.log(butt[i].value);
+          console.log(firnum);
+        }
+        else{
+          secnum += String(butt[i].value);
+          console.log(butt[i].value);
+          console.log(secnum);
+        }
+    })}
+    let cal = document.getElementsByClassName("calbutton");
+    for(let ical=0; ical<cal.length;ical++){
+      cal[ical].addEventListener("click", ()=>{
+        console.log(cal[ical].value)
+        if(cal[ical].value == "+"){}
+        else if(cal[ical].value == "+"){}
+        else if(cal[ical].value == "+"){}
+        else if(cal[ical].value == "+"){}
+        else if(cal[ical].value == "+"){}
+
+      })
+    }
+    
+  </script>
+</body>
+</html>

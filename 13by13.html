@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="root">-------------구구단----------------</div>
+  <div id="seat">-------------자리배치----------------</div>
+  <div id="team">-------------팀배정----------------</div>
+
+
+
+  <script>
+    let root = document.getElementById("root")
+    let base = 13;
+    for(let i = 1; i < base + 1; i ++){
+      for(let j = 1; j < base + 1; j ++){
+        let line = `${i} X ${j} = ${i*j}`;
+        let answer = document.createElement("div");
+        answer.innerText = line;
+        root.appendChild(answer);
+
+      }
+    }
+    
+    for(let k = 1; k < 10; k += 0.5){
+      let line = `3.5 X ${k} = ${3.5*k}`;
+      let answer = document.createElement("div");
+      answer.innerText = line;
+      root.appendChild(answer);
+      }
+    let student = [
+      "강지민",
+      "곽윤호",
+      "권예준",
+      "김동주",
+      "김은아",
+      "김종윤",
+      "김지섭",
+      "김형진",
+      "노수민",
+      "류은이",
+      "박달재",
+      "박수연",
+      "박준형",
+      "성해경",
+      "이경택",
+      "이세민",
+      "이재권",
+      "임지성",
+      "장루빈",
+      "정성철",
+      "정지은",
+      "정희은",
+      "최대건",
+      "한유진",
+      "허진",
+    ];
+    let seat = document.getElementById("seat");
+    let cnt = 0;
+    for(let col = 0; col < 5; col ++){
+      let colnow = "";
+      for(let row = 0; row < 6; row ++){
+        if(cnt>=student.length){
+          colnow += `[${col},${row},${"&nbsp".repeat(9)}]`;
+          cnt += 1;
+        }
+        else{
+          colnow += `[${col},${row},${student[cnt]}]`;
+          cnt += 1;
+        }
+      }
+      let addup = document.createElement("div");
+      addup.innerHTML = colnow;
+      seat.appendChild(addup);
+    }
+    let team = document.getElementById("team");
+    
+    let teamlist = [];
+    let combi = [];
+    let teamcnt = 1;
+    for(let a = 0;a<student.length - 2;a++){
+      for(let b = a + 1;b<student.length - 1; b ++){
+        for(let c = b + 1;c<student.length; c ++){
+          combi = [`(${teamcnt}번째 조합)`,student[a],student[b],student[c]];
+          teamcnt ++;
+          let teamcombilist = document.createElement("div");
+          teamcombilist.innerText = combi;
+          team.appendChild(teamcombilist)
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>

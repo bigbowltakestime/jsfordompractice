@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    let root = document.getElementById("root");
+    let student = [
+      "강지민",
+      "곽윤호",
+      "권예준",
+      "김동주",
+      "김은아",
+      "김종윤",
+      "김지섭",
+      "김형진",
+      "노수민",
+      "류은이",
+      "박달재",
+      "박수연",
+      "박준형",
+      "성해경",
+      "이경택",
+      "이세민",
+      "이재권",
+      "임지성",
+      "장루빈",
+      "정성철",
+      "정지은",
+      "정희은",
+      "최대건",
+      "한유진",
+      "허진",
+    ];
+    let studentcount = new Array(student.length);
+    studentcount.fill(0);
+    let energybarRGB = new Array(student.length);
+    for(let j = 0;j < energybarRGB.length;j++){
+      energybarRGB[j] = [255,200,0]
+    }
+    console.log(energybarRGB)
+    for(let i = 0;i<student.length;i++){
+      let nowstudent = document.createElement("div");
+      nowstudent.innerText = student[i];
+      nowstudent.style.cursor = "pointer";
+      nowstudent.style.fontSize = "12px";
+      nowstudent.style.fontWeight = "400";
+      root.appendChild(nowstudent)
+      let energybar = document.createElement("div");
+      energybar.style.height = "12px";
+      energybar.style.width = "6px";
+      energybar.style.backgroundColor = `rgb(${energybarRGB[i][0]},${energybarRGB[i][1]},${energybarRGB[i][2]})`
+      root.appendChild(energybar)
+      nowstudent.appendChild(document.createElement("div"))
+      nowstudent.addEventListener("click", ()=>{
+        console.log("onclick")
+        studentcount[i] ++;
+        // let indexAndCount = `${i} 번째 학생이 ${studentcount[i]} 번 눌렸습니다`;
+        let indexAndCount = `은 ${student.indexOf(student[i])} 번째 학생입니다`;
+        energybar.style.width = `${6 + studentcount[i]*3}px`
+        if(energybarRGB[i][1]>0){
+          energybarRGB[i][1] -= 4
+          console.log(`${i}번째 학생 빨간색 증가`)
+          console.log(`rgb값 ${energybarRGB}`)
+          
+        }
+        energybar.style.backgroundColor = `rgb(${energybarRGB[i][0]},${energybarRGB[i][1]},${energybarRGB[i][2]})`
+        nowstudent.innerText = student[i].padEnd(9, " ") + indexAndCount;
+        // nowstudent.style.fontSize = `${12+studentcount[i]}px`;
+        nowstudent.style.fontWeight = `${400+studentcount[i]*100}px`;
+      }
+
+      )
+    }
+
+    // for(let i=0;i<student.length;i++)
+    //   {
+    //     let li = document.createElement("li");
+    //     li.textContent = poke[i]
+    //     root.appendChild(li);
+    //   }
+  </script>
+</body>
+</html>
