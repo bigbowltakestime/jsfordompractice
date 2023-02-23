@@ -12,6 +12,8 @@
 <body>
   <div id = "root">
     <div>
+      <div id= "numdisplay"> 0 </div>
+
       <input class = "numbutton" type="button" value=1 >
       <input class = "numbutton" type="button" value=2 >
       <input class = "numbutton" type="button" value=3 >
@@ -36,38 +38,82 @@
 
 
     </div>
-    <div>
-    </div>
+
 
   </div>
   <script>
-    let firnum = ""
-    let secnum = ""
+    let root = document.getElementById("root");
+    let numdisplay = document.getElementById("numdisplay");
+    let firnum = "";
+    let secnum = "";
     let flag = true;
     let butt = document.getElementsByClassName("numbutton");
     for(let i =0;i<butt.length;i++){
       butt[i].addEventListener('click', ()=>{
         if(flag){
           firnum += String(butt[i].value);
-          console.log(butt[i].value);
           console.log(firnum);
+          numdisplay.innerHTML = firnum;
         }
         else{
           secnum += String(butt[i].value);
-          console.log(butt[i].value);
           console.log(secnum);
+          numdisplay.innerHTML = secnum;
         }
     })}
     let cal = document.getElementsByClassName("calbutton");
+    let whatcal = "";
     for(let ical=0; ical<cal.length;ical++){
       cal[ical].addEventListener("click", ()=>{
         console.log(cal[ical].value)
-        if(cal[ical].value == "+"){}
-        else if(cal[ical].value == "+"){}
-        else if(cal[ical].value == "+"){}
-        else if(cal[ical].value == "+"){}
-        else if(cal[ical].value == "+"){}
+        if(cal[ical].value == "+"){
+          flag = false;
+          whatcal = "+"
+          numdisplay.innerHTML = whatcal;
+        }
+        else if(cal[ical].value == "-"){
+          flag = false;
+          whatcal = "-"
+          numdisplay.innerHTML = whatcal;
 
+        }
+        else if(cal[ical].value == "*"){
+          flag = false;
+          whatcal = "*"
+          numdisplay.innerHTML = whatcal;
+        }
+        else if(cal[ical].value == "/"){
+          flag = false;
+          whatcal = "/"
+          numdisplay.innerHTML = whatcal;
+        }
+        else if(cal[ical].value == "="){
+          // if문 안에 if문이 또 들어가서 마음에 안든다.
+          // 개선할 예정이지만 지금은 마땅한 방법이 없다.
+          // eval()함수를 찾았지만 더 느리고 보안도 문제있다고 해서 고민중. 사용자에게 firstnum, secondnum, calcualtor 순으로 입력하라고 하면 if문이 하나면 되지만, 사용자 친회적이지 않기에 수를 받는 것을 함수로 만들어 각 if문 안에 넣어서 판별을 한번만 하는 것으로 해야하나 생각중이지만 그렇다면 '='을 입력했을 때, eventlistener를 통해 어떻게 할 수 있을 까 감이 안온다. callback을 써야할 까? 일단 구현해놓고 더 생각해봐야겠다.
+          let answer = Number(firnum);
+          if(whatcal=="+"){
+            answer += Number(secnum)
+          }
+          else if(whatcal=="-"){
+            answer -= Number(secnum)
+          }
+          else if(whatcal=="*"){
+            answer *= Number(secnum)
+          }
+          else if(whatcal=="/"){
+            answer /= Number(secnum)
+          }
+          console.log(`the answer is ${answer}`);
+          firnum = "";
+          secnum = "";
+          flag = true;
+          numdisplay.innerHTML = answer;
+         
+          let answertext = document.createElement("div");
+          answertext.innerHTML = answer;
+          root.appendChild(answertext)
+        }
       })
     }
     
